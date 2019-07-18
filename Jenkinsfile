@@ -8,11 +8,17 @@ pipeline {
 		}
 		stage('Installing ChefDK') {
 			steps {
-				echo "Install ChefDK"
-				sh 'export CHEF_LICENSE=accept'
-				sh 'sudo apt-get install -y wget'
-				sh 'wget https://packages.chef.io/files/stable/chefdk/3.8.14/ubuntu/16.04/chefdk_3.8.14-1_amd64.deb'
-				sh 'sudo dpkg -i chefdk_3.8.14-1_amd64.deb'
+				script {
+					def exists = fileExists '/usr/bin/chef-client'
+					if (exists) {
+						echo "Skipping ChefDK install - Already Installed"
+					} else {
+
+					echo "Install ChefDK"
+					sh 'export CHEF_LICENSE=accept'
+					sh 'sudo apt-get install -y wget'
+					sh 'wget https://packages.chef.io/files/stable/chefdk/3.8.14/ubuntu/16.04/chefdk_3.8.14-1_amd64.deb'
+					sh 'sudo dpkg -i chefdk_3.8.14-1_amd64.deb'
 			}
 		}
 		stage('Third Stage') {
