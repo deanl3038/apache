@@ -26,7 +26,7 @@ pipeline {
 		stage('Third Stage') {
 			steps {
 				git credentialsId: 'git-repo-creds', url: 'git@github.com:deanl3038/apache.git'
-				}	
+				
 			}
 		}
 	}
