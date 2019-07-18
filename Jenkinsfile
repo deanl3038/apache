@@ -29,5 +29,10 @@ pipeline {
 				
 			}
 		}
+		stage ('Install Kitchen Docker Gem') {
+			steps {
+				sh 'chef gem install kitchen-docker'
+				}
+		}
 	}
 }
