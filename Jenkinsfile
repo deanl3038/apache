@@ -34,5 +34,10 @@ pipeline {
 				sh 'chef gem install kitchen-docker'
 				}
 		}
+		stage ('Run test kitchensh') {
+                        steps {
+                                sh 'sudo kitchen test'
+                                }
+                }
 	}
 }
