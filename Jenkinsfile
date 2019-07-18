@@ -21,6 +21,7 @@ pipeline {
 					sh 'sudo dpkg -i chefdk_3.8.14-1_amd64.deb'
 			}
 		}
+}
 		stage('Third Stage') {
 			steps {
 				git credentialsId: 'git-repo-creds', url: 'git@github.com:deanl3038/apache.git'
